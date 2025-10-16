@@ -1,3 +1,6 @@
+/* 0) Import your forked Scyfin theme first */
+@import url('https://cdn.jsdelivr.net/gh/Netropolitan/rebelwave@e737b0cc17e05d6a0852a77cae76ad220bb661c0/CSS/scyfin-theme.css');
+
 /* Variables */
 :root {
     --primary-r: 0;
@@ -18,6 +21,10 @@
     --primary-alt3: rgb(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 0.7);
     --primary-alt4: rgb(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 0.55);
     --primary-alt5: rgb(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 0.4);
+
+    /* === Your brand images === */
+    --brand-logo-wide: url("https://25517737.fs1.hubspotusercontent-eu1.net/hubfs/25517737/Rebel%20Wave%20(1000%20x%20500%20px).svg");
+    --brand-logo-mark: url("https://25517737.fs1.hubspotusercontent-eu1.net/hubfs/25517737/Rebel%20Wave.svg");
 }
 
 /* Setting accent color variable */
@@ -154,8 +161,6 @@ progress::-webkit-progress-value {
     transform: scale(1.015);
 }
 
-
-
 /* Rounded cards */
 .cardContent,
 .cardPadder,
@@ -173,8 +178,6 @@ progress::-webkit-progress-value {
 .itemSelectionPanel .checkboxOutline {
     margin: 7px !important;
 }
-
-
 
 /* Floating progress bar */
 .innerCardFooter {
@@ -234,14 +237,10 @@ progress::-webkit-progress-value {
     padding: .8em 0em !important;
 }
 
-
-
 /* Green watched indicator */
 .playedIndicator {
     background: #409843 !important;
 }
-
-
 
 /* Rounded left drawer buttons */
 .navMenuOption,
@@ -273,8 +272,6 @@ progress::-webkit-progress-value {
     top: -14px !important;
 }
 
-
-
 /* Custom button color */
 .navMenuOption-selected {
     background: var(--secondary-accent-color) !important;
@@ -287,7 +284,6 @@ html,
 .noBackdropTransparency .detailPageSecondaryContainer {
     background-color: var(--primary-background-color) !important;
 }
-
 
 /* Transparent header bar */
 .skinHeader {
@@ -398,8 +394,6 @@ html,
         transform: translateY(-60%);
     }
 }
-
-
 
 /* Player modifications */
 .upNextContainer:not(#skipIntro), .toastVisible {
@@ -580,8 +574,6 @@ html,
 .material-icons.audiotrack::before {
     content: "\e91f";
 }
-
-
 
 /* Settings and dashboard modifications */
 .emby-input,
@@ -804,8 +796,6 @@ textarea {
     }
 }
 
-
-
 /* Metadata editor fixes */
 .layout-desktop .editPageSidebar {
     width: 25vw !important;
@@ -831,8 +821,6 @@ textarea {
     height: 40px !important;
     color: white !important;
 }
-
-
 
 /* Resize show/movie image on details page */
 .layout-desktop .detailImageContainer .card {
@@ -1051,7 +1039,7 @@ textarea {
     background-size: contain !important;
     border-radius: var(--rounded-cards);
 }
-/* Move up content if no backdrop image is present - I might make this work at some point, right now it causes the page to jump around when it is loading
+/* Move up content if no backdrop image is present
 @supports selector(:has(*)) {
     .layout-desktop:not(:has(.backdropContainer .backdropImage)) #itemBackdrop {
         height: 20vh !important;
@@ -1059,13 +1047,10 @@ textarea {
 }
 */
 
-
 /* Live TV */
-/* Modified background color of active guide cells */
 .programCell-active {
     background: var(--secondary-background-color) !important;
 }
-/* Repositioned record button */
 .recordingFields {
     margin: 5px 0 -7px 0 !important;
 }
@@ -1075,12 +1060,9 @@ textarea {
 .recordingIcon {
     color: red !important;
 }
-/* Remove overlapping text */
 .itemMiscInfo.itemMiscInfo-secondary {
     margin-left: 65px !important;
 }
-
-
 
 /* Music Player */
 .layout-desktop .appfooter {
@@ -1103,8 +1085,6 @@ textarea {
 .layout-desktop .appfooter .nowPlayingBar .nowPlayingBarPositionContainer {
     top: -15px !important;
 }
-
-
 
 /* Fix for scaling issues */
 @media (width: 1600px) {
@@ -1134,8 +1114,6 @@ textarea {
     }
 }
 
-
-
 /* Fixes for TV Layout */
 .layout-tv .sectionTabs {
     width: auto !important;
@@ -1143,8 +1121,6 @@ textarea {
 .layout-tv .headerLeft {
     padding: 5px !important;
 }
-
-
 
 /* Login page */
 .layout-desktop #loginPage {
@@ -1235,8 +1211,6 @@ textarea {
     }
 }
 
-
-
 /* Dialog box */
 .dialog {
     background-color: var(--secondary-background-color) !important;
@@ -1244,8 +1218,6 @@ textarea {
 .actionSheetTitle {
     margin: 10px 20px !important;
 }
-
-
 
 /* Dynamic backdrop support */
 
@@ -1288,3 +1260,72 @@ textarea {
     background: var(--primary-background-transparent) !important;
     backdrop-filter: blur(var(--blur)) !important;
 }
+
+/* =========================================================
+   Brand logo overrides (header + login)
+   ========================================================= */
+
+/* Hide stock logos where they appear */
+.headerLogo img,
+.headerLogo svg,
+.pageTitleWithLogo img,
+.pageTitleWithLogo svg,
+#loginPage .logo img,
+#loginPage .logo svg {
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Header logo container (uses your wide logo) */
+.headerLogo,
+.pageTitleWithLogo .headerLogo {
+  position: relative !important;
+  display: inline-block !important;
+  min-width: 160px !important;
+  height: 40px !important;  /* matches your earlier height tweak */
+}
+.headerLogo::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background-image: var(--brand-logo-wide) !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  background-position: left center !important;
+}
+
+/* (Optional) Sidebar mini logo – shown if the element exists in your skin */
+.layout-desktop .sidebarLogo img,
+.layout-desktop .sidebarLogo svg {
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.layout-desktop .sidebarLogo::before {
+  content: "" !important;
+  display: block !important;
+  width: 28px !important;
+  height: 28px !important;
+  background-image: var(--brand-logo-mark) !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  background-position: center !important;
+}
+
+/* Login page logo (uses your mark) */
+#loginPage .logo {
+  position: relative !important;
+}
+#loginPage .logo::before{
+  content: "" !important;
+  display: block !important;
+  width: 220px !important;
+  height: 220px !important;
+  margin: 0 auto !important;
+  background-image: var(--brand-logo-mark) !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  background-position: center !important;
+}
+
