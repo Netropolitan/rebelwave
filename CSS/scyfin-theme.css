@@ -1289,45 +1289,70 @@ textarea {
     backdrop-filter: blur(var(--blur)) !important;
 }
 
-/* === Your brand images === */
+
+
+/* 1) Pull in your forked Scyfin theme */
+@import url('https://cdn.jsdelivr.net/gh/Netropolitan/rebelwave@e737b0cc17e05d6a0852a77cae76ad220bb661c0/CSS/scyfin-theme.css');
+
+/* 2) Your brand images (edit these two URLs if you change where the files live) */
 :root{
   --brand-logo-wide: url("https://25517737.fs1.hubspotusercontent-eu1.net/hubfs/25517737/Rebel%20Wave%20(1000%20x%20500%20px).svg");
   --brand-logo-mark: url("https://25517737.fs1.hubspotusercontent-eu1.net/hubfs/25517737/Rebel%20Wave.svg");
 }
 
+/* 3) Swap the built-in logos with yours */
+
 /* Top-left header logo */
-.headerLogo img { opacity: 0 !important; }         /* hide stock image */
-.headerLogo { position: relative; min-width: 140px; }
-.headerLogo::before{
-  content: "";
-  position: absolute; inset: 0;
-  background-image: var(--brand-logo-wide);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: left center;
+.headerLogo img,
+.headerLogo svg,
+.pageTitleWithLogo img,
+.pageTitleWithLogo svg {
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
-/* Sidebar mini logo (desktop) */
-.layout-desktop .sidebarLogo img { opacity: 0 !important; }
-.layout-desktop .sidebarLogo::before{
-  content: "";
-  display: block; width: 28px; height: 28px;
-  background-image: var(--brand-logo-mark);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+.headerLogo,
+.pageTitleWithLogo .headerLogo {
+  position: relative !important;
+  display: inline-block !important;
+  min-width: 160px !important;
+  height: 40px !important;
+}
+
+.headerLogo::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background-image: var(--brand-logo-wide) !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  background-position: left center !important;
 }
 
 /* Login page logo */
-.loginPage .logo img { opacity: 0 !important; }
-.loginPage .logo { position: relative; }
-.loginPage .logo::before{
-  content: "";
-  display: block;
-  width: 200px; height: 200px;       /* adjust if needed */
-  margin: 0 auto;
-  background-image: var(--brand-logo-mark);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+#loginPage .logo img,
+#loginPage .logo svg {
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
 }
+
+#loginPage .logo {
+  position: relative !important;
+}
+
+#loginPage .logo::before{
+  content: "" !important;
+  display: block !important;
+  width: 220px !important;
+  height: 220px !important;
+  margin: 0 auto !important;
+  background-image: var(--brand-logo-mark) !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  background-position: center !important;
+}
+
+/* Optional: slightly bump the header logo space for Scyfin’s layout */
+.layout-desktop .pageTitleWithLogo { margin-left: 25px !important; height: 40px !important; }
