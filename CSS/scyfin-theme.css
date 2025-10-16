@@ -1288,3 +1288,46 @@ textarea {
     background: var(--primary-background-transparent) !important;
     backdrop-filter: blur(var(--blur)) !important;
 }
+
+/* === Your brand images === */
+:root{
+  --brand-logo-wide: url("https://25517737.fs1.hubspotusercontent-eu1.net/hubfs/25517737/Rebel%20Wave%20(1000%20x%20500%20px).svg");
+  --brand-logo-mark: url("https://25517737.fs1.hubspotusercontent-eu1.net/hubfs/25517737/Rebel%20Wave.svg");
+}
+
+/* Top-left header logo */
+.headerLogo img { opacity: 0 !important; }         /* hide stock image */
+.headerLogo { position: relative; min-width: 140px; }
+.headerLogo::before{
+  content: "";
+  position: absolute; inset: 0;
+  background-image: var(--brand-logo-wide);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left center;
+}
+
+/* Sidebar mini logo (desktop) */
+.layout-desktop .sidebarLogo img { opacity: 0 !important; }
+.layout-desktop .sidebarLogo::before{
+  content: "";
+  display: block; width: 28px; height: 28px;
+  background-image: var(--brand-logo-mark);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+/* Login page logo */
+.loginPage .logo img { opacity: 0 !important; }
+.loginPage .logo { position: relative; }
+.loginPage .logo::before{
+  content: "";
+  display: block;
+  width: 200px; height: 200px;       /* adjust if needed */
+  margin: 0 auto;
+  background-image: var(--brand-logo-mark);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
